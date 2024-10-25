@@ -5,7 +5,7 @@ import styled, { css } from "styled-components";
 //   ${10 > 5 && "background-color: yellow"};
 // `;
 
-export const Heading = styled.h1`
+const Heading = styled.h1`
   ${(props) =>
     props.as === "h1" &&
     css`
@@ -25,3 +25,5 @@ export const Heading = styled.h1`
       font-weight: 500;
     `}
 `;
+
+export default Heading;
