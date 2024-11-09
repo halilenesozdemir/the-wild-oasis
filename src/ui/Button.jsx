@@ -48,7 +48,7 @@ const variations = {
   `,
 };
 
-export const Button = styled.button`
+const Button = styled.button`
   font-weight: 500;
   border: none;
   border-radius: var(--border-radius-sm);
@@ -60,3 +60,5 @@ Button.defaultProps = {
   variation: "primary",
   size: "medium",
 };
+
+export default Button;
