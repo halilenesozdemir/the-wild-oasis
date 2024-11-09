@@ -5,7 +5,6 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSettings } from "./useSettings";
 import Spinner from "../../ui/Spinner";
-import { useForm } from "react-hook-form";
 import { useUpdateSetting } from "./useUpdateSetting";
 
 function UpdateSettingsForm() {
