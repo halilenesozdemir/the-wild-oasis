@@ -6,14 +6,7 @@ import Input from "../../ui/Input";
 import { useSettings } from "./useSettings";
 import Spinner from "../../ui/Spinner";
 import { useForm } from "react-hook-form";
-//  {
-//     "id": 1,
-//     "created_at": "2024-10-26T16:50:45.291323+00:00",
-//     "minBookingLength": 3,
-//     "maxBookingLength": 90,
-//     "maxGuestsPerBooking": 8,
-//     "breakfastPrice": 15
-// }
+import { useUpdateSetting } from "./useUpdateSetting";
 
 function UpdateSettingsForm() {
   const {
@@ -26,48 +19,55 @@ function UpdateSettingsForm() {
     } = {},
   } = useSettings();
 
-  const { register, handleSubmit } = useForm();
+  const { updateSetting, isUpdating } = useUpdateSetting();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleBlur = (e, field) => {
+    const { value } = e.target;
+    if (!value) return;
+    updateSetting({
+      [field]: value,
+    });
   };
 
   if (isLoading) return <Spinner />;
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form>
       <FormRow label="Minimum nights/booking">
         <Input
           type="number"
           id="min-nights"
-          {...register("min-nights")}
           defaultValue={minBookingLength}
+          onBlur={(e) => handleBlur(e, "minBookingLength")}
+          disabled={isUpdating}
         />
       </FormRow>
       <FormRow label="Maximum nights/booking">
         <Input
           type="number"
           id="max-nights"
-          {...register("max-nights")}
           defaultValue={maxBookingLength}
+          onBlur={(e) => handleBlur(e, "maxBookingLength")}
+          disabled={isUpdating}
         />
       </FormRow>
       <FormRow label="Maximum guests/booking">
         <Input
           type="number"
           id="max-guests"
-          {...register("max-guests")}
           defaultValue={maxGuestsPerBooking}
+          onBlur={(e) => handleBlur(e, "maxGuestsPerBooking")}
+          disabled={isUpdating}
         />
       </FormRow>
       <FormRow label="Breakfast price">
         <Input
           type="number"
           id="breakfast-price"
-          {...register("breakfast-price")}
           defaultValue={breakfastPrice}
+          onBlur={(e) => handleBlur(e, "breakfastPrice")}
+          disabled={isUpdating}
         />
       </FormRow>
-      <input type="submit"></input>
     </Form>
   );
 }
