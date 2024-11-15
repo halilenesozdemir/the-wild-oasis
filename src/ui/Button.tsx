@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+type ButtonProps = {
+  variation: string;
+  size: string;
+};
+
 const sizes = {
   small: css`
     font-size: 1.2rem;
@@ -48,7 +53,7 @@ const variations = {
   `,
 };
 
-const Button = styled.button`
+const Button = styled.button<ButtonProps>`
   font-weight: 500;
   border: none;
   border-radius: var(--border-radius-sm);

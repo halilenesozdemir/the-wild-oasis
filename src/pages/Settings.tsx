@@ -1,6 +1,5 @@
-import React from "react";
-import Heading from "../ui/Heading";
 import UpdateSettingsForm from "../features/settings/UpdateSettingsForm";
+import Heading from "../ui/Heading";
 
 function Settings() {
   return (
